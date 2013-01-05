@@ -1,7 +1,2 @@
-require "rails-performance_test/version"
-
-module Rails
-  module PerformanceTest
-    # Your code goes here...
-  end
-end
+require 'rails/performance_tests/railtie' if defined? Rails
+require "rails/performance_tests/version"
