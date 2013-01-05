@@ -19,3 +19,19 @@ end
 
 task :test => ['test:regular', 'test:generators']
 task :default => :test
+
+specname = "rails-performance_tests.gemspec"
+deps = `git ls-files`.split("\n") - [specname]
+
+file specname => deps do
+  files       = `git ls-files`.split("\n")
+  test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+
+  require 'erb'
+
+  File.open specname, 'w:utf-8' do |f|
+    f.write ERB.new(File.read("#{specname}.erb")).result(binding)
+  end
+end
+task :build => specname
