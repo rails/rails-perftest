@@ -1,5 +1,3 @@
 module ActionDispatch
-  autoload_under do
-    autoload :PerformanceTest, 'rails/performance_test/action_dispatch/performance_test'
-  end
+  autoload :PerformanceTest, 'rails/performance_tests/action_dispatch/performance_test'
 end
