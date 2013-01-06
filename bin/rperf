@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+current_dir = Dir.pwd
+rails_root = current_dir
+
+APP_PATH = File.expand_path('config/application',  rails_root)
+require File.expand_path('config/boot',  rails_root)
+
+require 'rails/performance_tests/commands'
