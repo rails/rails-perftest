@@ -29,7 +29,7 @@ stack. If you want to use performance tests simply follow these instructions.
 
 Add this line to your application's Gemfile:
 
-    gem 'rails-performance_test'
+    gem 'rails-perftest'
 
 Performance Test Cases
 ----------------------

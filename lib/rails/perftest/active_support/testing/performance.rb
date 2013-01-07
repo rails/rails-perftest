@@ -262,9 +262,9 @@ module ActiveSupport
 end
 
 case RUBY_ENGINE
-  when 'ruby'   then require 'rails/performance_tests/active_support/testing/performance/ruby'
-  when 'rbx'    then require 'rails/performance_tests/active_support/testing/performance/rubinius'
-  when 'jruby'  then require 'rails/performance_tests/active_support/testing/performance/jruby'
+  when 'ruby'   then require 'rails/perftest/active_support/testing/performance/ruby'
+  when 'rbx'    then require 'rails/perftest/active_support/testing/performance/rubinius'
+  when 'jruby'  then require 'rails/perftest/active_support/testing/performance/jruby'
   else
     $stderr.puts 'Your ruby interpreter is not supported for benchmarking.'
     exit

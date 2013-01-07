@@ -1,7 +1,7 @@
 require 'optparse'
 require 'rails/test_help'
-require 'rails/performance_tests/test_help'
-require 'rails/performance_tests/active_support/testing/performance'
+require 'rails/performance_test_help'
+require 'rails/perftest/active_support/testing/performance'
 
 def options
   options = {}

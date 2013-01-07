@@ -1,4 +1,4 @@
-require 'rails/performance_tests/active_support/testing/performance'
+require 'rails/perftest/active_support/testing/performance'
 
 module ActionDispatch
   # An integration test that runs a code profiler on your test methods.

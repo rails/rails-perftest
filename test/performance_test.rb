@@ -1,5 +1,5 @@
 require 'helper'
-require 'rails/performance_tests/active_support/testing/performance'
+require 'rails/perftest/active_support/testing/performance'
 
 module ActiveSupport
   module Testing

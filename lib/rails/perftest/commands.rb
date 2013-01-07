@@ -16,7 +16,7 @@ case command
 when 'benchmarker', 'profiler'
   require APP_PATH
   Rails.application.require_environment!
-  require "rails/performance_tests/commands/#{command}"
+  require "rails/perftest/commands/#{command}"
 
 when '-h', '--help'
   puts help_message

@@ -1,5 +1,5 @@
 require 'test_helper'
-require 'rails/performance_tests/test_help'
+require 'rails/performance_test_help'
 
 class <%= class_name %>Test < ActionDispatch::PerformanceTest
   # Refer to the documentation for all available options

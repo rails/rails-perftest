@@ -20,7 +20,7 @@ end
 task :test => ['test:regular', 'test:generators']
 task :default => :test
 
-specname = "rails-performance_tests.gemspec"
+specname = "rails-perftest.gemspec"
 deps = `git ls-files`.split("\n") - [specname]
 
 file specname => deps do
