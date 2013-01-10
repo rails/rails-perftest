@@ -544,7 +544,7 @@ performance testing:
 Usage:
 
 ```bash
-Usage: rperf benchmarker 'Ruby.code' 'Ruby.more_code' ... [OPTS]
+Usage: perftest benchmarker 'Ruby.code' 'Ruby.more_code' ... [OPTS]
     -r, --runs N                     Number of runs.
                                      Default: 4
     -o, --output PATH                Directory to use when writing the results.
@@ -556,7 +556,7 @@ Usage: rperf benchmarker 'Ruby.code' 'Ruby.more_code' ... [OPTS]
 Example:
 
 ```bash
-$ rperf benchmarker 'Item.all' 'CouchItem.all' --runs 3 --metrics wall_time,memory
+$ perftest benchmarker 'Item.all' 'CouchItem.all' --runs 3 --metrics wall_time,memory
 ```
 
 ### `profiler`
@@ -564,7 +564,7 @@ $ rperf benchmarker 'Item.all' 'CouchItem.all' --runs 3 --metrics wall_time,memo
 Usage:
 
 ```bash
-Usage: rperf profiler 'Ruby.code' 'Ruby.more_code' ... [OPTS]
+Usage: perftest profiler 'Ruby.code' 'Ruby.more_code' ... [OPTS]
     -r, --runs N                     Number of runs.
                                      Default: 1
     -o, --output PATH                Directory to use when writing the results.
@@ -578,7 +578,7 @@ Usage: rperf profiler 'Ruby.code' 'Ruby.more_code' ... [OPTS]
 Example:
 
 ```bash
-$ rperf profiler 'Item.all' 'CouchItem.all' --runs 2 --metrics process_time --formats flat
+$ perftest profiler 'Item.all' 'CouchItem.all' --runs 2 --metrics process_time --formats flat
 ```
 
 NOTE: Metrics and formats vary from interpreter to interpreter. Pass `--help` to
