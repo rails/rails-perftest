@@ -2,9 +2,9 @@ require 'optparse'
 require 'rails/test_help'
 require 'rails/performance_test_help'
 
-ARGV.push('--benchmark') # HAX
+ENV["BENCHMARK_TESTS"] = '1'
+
 require 'rails/perftest/active_support/testing/performance'
-ARGV.pop
 
 def options
   options = {}
