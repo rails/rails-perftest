@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Rails::Perftest::VERSION
 
-  gem.add_development_dependency 'ruby-prof'
+  gem.add_development_dependency 'ruby-prof', '>= 0.12.1'
   gem.add_development_dependency 'minitest', '>= 3'
   gem.add_development_dependency 'railties', '~> 4.0.0.beta'
   gem.add_development_dependency 'activerecord', '~> 4.0.0.beta'
