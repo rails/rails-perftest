@@ -39,27 +39,6 @@ benchmarking and profiling the test code. With performance tests, you can
 determine where your application's memory or speed problems are coming from,
 and get a more in-depth picture of those problems.
 
-In a freshly generated Rails application, `test/performance/browsing_test.rb`
-contains an example of a performance test:
-
-```ruby
-require 'test_helper'
-require 'rails/performance_test_help'
-
-class BrowsingTest < ActionDispatch::PerformanceTest
-  # Refer to the documentation for all available options
-  # self.profile_options = { runs: 5, metrics: [:wall_time, :memory],
-  #                          output: 'tmp/performance', formats: [:flat] }
-
-  test "homepage" do
-    get '/'
-  end
-end
-```
-
-This example is a simple performance test case for profiling a GET request to
-the application's homepage.
-
 ### Generating Performance Tests
 
 Rails provides a generator called `performance_test` for creating new
