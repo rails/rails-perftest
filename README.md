@@ -31,6 +31,13 @@ Add this line to your application's Gemfile:
 
     gem 'rails-perftest'
 
+
+If you want to benchmark/profile under MRI or REE, add this line as well:
+
+    gem 'ruby-prof'
+
+Now run `bundle install` and you're ready to go.
+
 Performance Test Cases
 ----------------------
 
@@ -499,17 +506,6 @@ alias gcrails='~/rubygc/bin/rails'
 ```
 
 Don't forget to use your aliases from now on.
-
-### Using Ruby-Prof on MRI and REE
-
-Add Ruby-Prof to your applications' Gemfile if you want to benchmark/profile
-under MRI or REE:
-
-```ruby
-gem 'ruby-prof'
-```
-
-Now run `bundle install` and you're ready to go.
 
 Command Line Tools
 ------------------
