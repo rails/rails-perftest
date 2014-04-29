@@ -35,9 +35,7 @@ module ActiveSupport
         "#{self.class.name}##{method_name}"
       end
 
-      def run(runner)
-        @runner = runner
-
+      def run
         run_warmup
         if full_profile_options && metrics = full_profile_options[:metrics]
           metrics.each do |metric_name|
@@ -47,7 +45,7 @@ module ActiveSupport
           end
         end
 
-        return
+        self
       end
 
       def run_test(metric, mode)
@@ -57,13 +55,13 @@ module ActiveSupport
           setup
           metric.send(mode) { __send__ method_name }
         rescue Exception => e
-          result = @runner.puke(self.class, method_name, e)
+          result = result_code + e.message
         ensure
           begin
             teardown
             run_callbacks :teardown
           rescue Exception => e
-            result = @runner.puke(self.class, method_name, e)
+            result = result_code + e.message
           end
         end
         result
