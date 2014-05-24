@@ -35,9 +35,35 @@ module ActiveSupport
         "#{self.class.name}##{method_name}"
       end
 
-      def run(runner)
-        @runner = runner
+      module Minitest4AndLower
+        def run(runner)
+          @runner = runner
+          _performance_run
+          return
+        end
 
+        def performance_failure(e)
+          @runner.puke(self.class, method_name, e)
+        end
+      end
+
+      module Minitest5AndGreater
+        def run
+          _performance_run
+          self
+        end
+
+        def performance_failure(e)
+          case e
+          when Minitest::Assertion
+            self.failures << e
+          else
+            self.failures << Minitest::UnexpectedError.new(e)
+          end
+        end
+      end
+
+      def _performance_run
         run_warmup
         if full_profile_options && metrics = full_profile_options[:metrics]
           metrics.each do |metric_name|
@@ -46,8 +72,6 @@ module ActiveSupport
             end
           end
         end
-
-        return
       end
 
       def run_test(metric, mode)
@@ -57,13 +81,13 @@ module ActiveSupport
           setup
           metric.send(mode) { __send__ method_name }
         rescue Exception => e
-          result = @runner.puke(self.class, method_name, e)
+          result = performance_failure(e)
         ensure
           begin
             teardown
             run_callbacks :teardown
           rescue Exception => e
-            result = @runner.puke(self.class, method_name, e)
+            result = performance_failure(e)
           end
         end
         result

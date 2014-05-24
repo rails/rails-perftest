@@ -6,5 +6,11 @@ module ActionDispatch
   # output format are written to your tmp/performance directory.
   class PerformanceTest < ActionDispatch::IntegrationTest
     include ActiveSupport::Testing::Performance
+
+    if Gem.loaded_specs["minitest"].version < Gem::Version.create('5.0.0')
+      include Minitest4AndLower
+    else
+      include Minitest5AndGreater
+    end
   end
 end
