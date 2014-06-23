@@ -1,3 +1,5 @@
+require 'rails/test_unit/sub_test_task' # for SubTestTask in case rails app doesn't require "rails/test_unit/railtie"
+
 namespace :test do
   task 'perftest:benchmark_mode' do
     ENV["BENCHMARK_TESTS"] = '1'
