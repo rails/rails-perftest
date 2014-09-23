@@ -77,15 +77,17 @@ module ActiveSupport
       def run_test(metric, mode)
         result = '.'
         begin
-          run_callbacks :setup
+          before_setup
           setup
+          after_setup
           metric.send(mode) { __send__ method_name }
         rescue Exception => e
           result = performance_failure(e)
         ensure
           begin
+            before_teardown
             teardown
-            run_callbacks :teardown
+            after_teardown
           rescue Exception => e
             result = performance_failure(e)
           end
