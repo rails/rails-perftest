@@ -665,7 +665,8 @@ Commercial Products
 -------------------
 
 Rails has been lucky to have a few companies dedicated to Rails-specific
-performance tools. A couple of those are:
+performance tools:
 
-* [New Relic](http://www.newrelic.com)
-* [Scout](http://scoutapp.com)
+* [New Relic](https://www.newrelic.com)
+* [Scout](https://scoutapp.com)
+* [Skylight](https://www.skylight.io)
