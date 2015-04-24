@@ -26,7 +26,7 @@ deps = `git ls-files`.split("\n") - [specname]
 file specname => deps do
   files       = `git ls-files`.split("\n")
   test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
-  executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  executables = `git ls-files -- exe/*`.split("\n").map{ |f| File.basename(f) }
 
   require 'erb'
 

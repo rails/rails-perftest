@@ -10,6 +10,7 @@ Gem::Specification.new do |gem|
   gem.license       = "MIT"
 
   gem.files         = [<%= files.map(&:inspect).join ',' %>]
+  gem.bindir       = "exe"
   gem.executables   = [<%= executables.map(&:inspect).join ',' %>]
   gem.test_files    = [<%= test_files.map(&:inspect).join ',' %>]
   gem.name          = "rails-perftest"
