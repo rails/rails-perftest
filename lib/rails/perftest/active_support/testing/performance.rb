@@ -1,6 +1,6 @@
 require 'fileutils'
 require 'active_support/concern'
-require 'active_support/core_ext/class/delegating_attributes'
+require 'active_support/core_ext/class/attribute'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/module/delegation'
 require 'active_support/number_helper'
@@ -11,7 +11,7 @@ module ActiveSupport
       extend ActiveSupport::Concern
 
       included do
-        superclass_delegating_accessor :profile_options
+        class_attribute :profile_options
         self.profile_options = {}
       end
 
