@@ -655,6 +655,7 @@ Useful Links
 * [ab](http://httpd.apache.org/docs/2.2/programs/ab.html)
 * [JMeter](http://jakarta.apache.org/jmeter/)
 * [kcachegrind](http://kcachegrind.sourceforge.net/html/Home.html)
+* [Gatling](http://gatling.io)
 
 ### Tutorials and Documentation
 
