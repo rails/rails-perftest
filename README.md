@@ -417,6 +417,10 @@ Rails.logger.level = ActiveSupport::Logger::INFO
 As `ActionController::Base.perform_caching` is set to `true`, performance tests
 will behave much as they do in the `production` environment.
 
+### Installing GC-Patched MRI 1.x.x
+
+Since Ruby 2 is now mainstream and handles garbage collection issues these docs have been cut. [View older readme explaning how to install optimized Ruby 1 builds](https://github.com/rails/rails-perftest/blob/2d4bbd6206f86a3bbe38ed825dddbf555ffdce41/README.md#installing-gc-patched-mri).
+
 Command Line Tools
 ------------------
 
