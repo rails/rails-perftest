@@ -183,6 +183,11 @@ To run performance tests in benchmarking mode:
 $ rake test:benchmark
 ```
 
+To run a single test pass it as TEST:
+```bash
+$ bin/rake test:benchmark TEST=test/performance/your_test.rb
+```
+
 #### Profiling
 
 Profiling allows you to make an in-depth analysis of each of your tests by using
