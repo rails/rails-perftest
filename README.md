@@ -522,7 +522,7 @@ NOTE: `benchmark` is a class method inside controllers.
 
 ### View
 
-And in [views](http://api.rubyonrails.org/classes/ActiveSupport/Benchmarkable.html:)
+And in [views](http://api.rubyonrails.org/classes/ActiveSupport/Benchmarkable.html)
 
 ```erb
 <% benchmark("Showing projects partial") do %>
