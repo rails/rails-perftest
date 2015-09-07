@@ -119,12 +119,6 @@ module ActiveSupport
         class CpuTime < Time
           Mode = RubyProf::CPU_TIME if RubyProf.const_defined?(:CPU_TIME)
 
-          def initialize(*args)
-            # FIXME: yeah my CPU is 2.33 GHz
-            RubyProf.cpu_frequency = 2.33e9 unless RubyProf.cpu_frequency > 0
-            super
-          end
-
           def measure
             RubyProf.measure_cpu_time
           end
