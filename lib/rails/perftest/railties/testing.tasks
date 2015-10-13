@@ -4,14 +4,25 @@ namespace :test do
   task 'perftest:benchmark_mode' do
     ENV["BENCHMARK_TESTS"] = '1'
   end
+  if Rake::Task.task_defined?('test:prepare')
+    Rails::SubTestTask.new(benchmark: ['test:prepare', 'test:perftest:benchmark_mode']) do |t|
+      t.libs << 'test'
+      t.pattern = 'test/performance/**/*_test.rb'
+    end
 
-  Rails::SubTestTask.new(benchmark: ['test:prepare', 'test:perftest:benchmark_mode']) do |t|
-    t.libs << 'test'
-    t.pattern = 'test/performance/**/*_test.rb'
-  end
+    Rails::SubTestTask.new(profile: 'test:prepare') do |t|
+      t.libs << 'test'
+      t.pattern = 'test/performance/**/*_test.rb'
+    end
+  else
+    Rails::SubTestTask.new(benchmark: ['db:test:prepare', 'test:perftest:benchmark_mode']) do |t|
+      t.libs << 'test'
+      t.pattern = 'test/performance/**/*_test.rb'
+    end
 
-  Rails::SubTestTask.new(profile: 'test:prepare') do |t|
-    t.libs << 'test'
-    t.pattern = 'test/performance/**/*_test.rb'
+    Rails::SubTestTask.new(profile: 'db:test:prepare') do |t|
+      t.libs << 'test'
+      t.pattern = 'test/performance/**/*_test.rb'
+    end
   end
 end
