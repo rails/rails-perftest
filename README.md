@@ -141,8 +141,8 @@ class PostPerformanceTest < ActionDispatch::PerformanceTest
 end
 ```
 
-You can find more details about the `get` and `post` methods in the
-[Testing Rails Applications](testing.html) guide.
+You can find more details about the `get` and `post` methods in the  
+[Testing Rails Applications](http://guides.rubyonrails.org/testing.html) guide.
 
 #### Model Example
 
