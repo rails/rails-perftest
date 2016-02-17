@@ -1,16 +1,16 @@
-require 'rails/test_unit/sub_test_task' # for SubTestTask in case rails app doesn't require "rails/test_unit/railtie"
+require 'rake/testtask'
 
 namespace :test do
   task 'perftest:benchmark_mode' do
     ENV["BENCHMARK_TESTS"] = '1'
   end
 
-  Rails::SubTestTask.new(benchmark: ['test:prepare', 'test:perftest:benchmark_mode']) do |t|
+  Rake::TestTask.new(benchmark: ['test:prepare', 'test:perftest:benchmark_mode']) do |t|
     t.libs << 'test'
     t.pattern = 'test/performance/**/*_test.rb'
   end
 
-  Rails::SubTestTask.new(profile: 'test:prepare') do |t|
+  Rake::TestTask.new(profile: 'test:prepare') do |t|
     t.libs << 'test'
     t.pattern = 'test/performance/**/*_test.rb'
   end
