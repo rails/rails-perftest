@@ -49,9 +49,15 @@ module ActiveSupport
 
           klasses.each do |klass|
             fname = output_filename(klass)
-            FileUtils.mkdir_p(File.dirname(fname))
-            File.open(fname, 'wb') do |file|
-              klass.new(@data).print(file, full_profile_options.slice(:min_percent))
+            printer = klass.new(@data)
+            if printer.is_a?(RubyProf::CallTreePrinter)
+              FileUtils.mkdir_p(fname)
+              printer.print(full_profile_options.merge(path: fname))
+            else
+              FileUtils.mkdir_p(File.dirname(fname))
+              File.open(fname, 'wb') do |file|
+                printer.print(file, full_profile_options.slice(:min_percent))
+              end
             end
           end
         end
@@ -65,7 +71,7 @@ module ActiveSupport
                 when 'GraphPrinter';                'graph.txt'
                 when 'GraphHtmlPrinter';            'graph.html'
                 when 'GraphYamlPrinter';            'graph.yml'
-                when 'CallTreePrinter';             'tree.txt'
+                when 'CallTreePrinter';             'tree'
                 when 'CallStackPrinter';            'stack.html'
                 when 'DotPrinter';                  'graph.dot'
                 else printer_class.name.sub(/Printer$/, '').underscore
