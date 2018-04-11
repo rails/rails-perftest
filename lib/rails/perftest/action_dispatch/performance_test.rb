@@ -7,10 +7,14 @@ module ActionDispatch
   class PerformanceTest < ActionDispatch::IntegrationTest
     include ActiveSupport::Testing::Performance
 
-    if Gem.loaded_specs["minitest"].version < Gem::Version.create('5.0.0')
+    minitest_version = Gem.loaded_specs["minitest"].version
+
+    if minitest_version < Gem::Version.create('5.0.0')
       include Minitest4AndLower
+    elsif minitest_version < Gem::Version.create('5.11.0')
+      include Minitest5
     else
-      include Minitest5AndGreater
+      include Minitest511AndGreater
     end
   end
 end

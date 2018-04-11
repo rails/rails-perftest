@@ -47,19 +47,34 @@ module ActiveSupport
         end
       end
 
-      module Minitest5AndGreater
+      module Minitest5
         def run
           _performance_run
           self
         end
 
         def performance_failure(e)
-          case e
-          when Minitest::Assertion
-            self.failures << e
-          else
-            self.failures << Minitest::UnexpectedError.new(e)
-          end
+          _performance_failure(e)
+        end
+      end
+
+      module Minitest511AndGreater
+        def run
+          _performance_run
+          ::Minitest::Result.from self
+        end
+
+        def performance_failure(e)
+          _performance_failure(e)
+        end
+      end
+
+      def _performance_failure(e)
+        case e
+        when Minitest::Assertion
+          self.failures << e
+        else
+          self.failures << Minitest::UnexpectedError.new(e)
         end
       end
 
