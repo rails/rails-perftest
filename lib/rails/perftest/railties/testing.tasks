@@ -5,13 +5,20 @@ namespace :test do
     ENV["BENCHMARK_TESTS"] = '1'
   end
 
-  Rake::TestTask.new(benchmark: ['test:prepare', 'test:perftest:benchmark_mode']) do |t|
+  requirements = []
+  if Rake::Task.task_defined?('db:test:prepare')
+    requirements << 'db:test:prepare'
+  end
+
+  Rake::TestTask.new(benchmark: requirements + ['test:perftest:benchmark_mode']) do |t|
     t.libs << 'test'
+    t.warning = false
     t.pattern = 'test/performance/**/*_test.rb'
   end
 
-  Rake::TestTask.new(profile: 'test:prepare') do |t|
+  Rake::TestTask.new(profile: requirements) do |t|
     t.libs << 'test'
+    t.warning = false
     t.pattern = 'test/performance/**/*_test.rb'
   end
 end
