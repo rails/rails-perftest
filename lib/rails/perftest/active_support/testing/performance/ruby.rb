@@ -50,8 +50,14 @@ module ActiveSupport
           klasses.each do |klass|
             fname = output_filename(klass)
             FileUtils.mkdir_p(File.dirname(fname))
-            File.open(fname, 'wb') do |file|
-              klass.new(@data).print(file, full_profile_options.slice(:min_percent))
+
+            printer = klass.new(@data)
+            if printer.is_a?(RubyProf::CallTreePrinter)
+              printer.print(full_profile_options.merge(path: File.dirname(fname)))
+            else
+              File.open(fname, 'wb') do |file|
+                printer.print(file, full_profile_options.slice(:min_percent))
+              end
             end
           end
         end
