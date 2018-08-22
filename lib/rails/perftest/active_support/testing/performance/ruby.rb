@@ -49,9 +49,18 @@ module ActiveSupport
 
           klasses.each do |klass|
             fname = output_filename(klass)
-            FileUtils.mkdir_p(File.dirname(fname))
-            File.open(fname, 'wb') do |file|
-              klass.new(@data).print(file, full_profile_options.slice(:min_percent))
+            printer = klass.new(@data)
+            options = full_profile_options.slice(:min_percent)
+            path = File.dirname(fname)
+            FileUtils.mkdir_p(path)
+            if printer.is_a?(RubyProf::CallTreePrinter) && RubyProf::VERSION >= "0.16"
+              printer.print(options.merge(:path => path))
+              call_grind_file = Dir.glob("#{path}/*callgrind.out*").first
+              File.rename(call_grind_file, fname)
+            else
+              File.open(fname, 'wb') do |file|
+                printer.print(file, options)
+              end
             end
           end
         end
