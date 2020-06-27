@@ -555,9 +555,6 @@ Rails, out of which 2 ms were spent rendering views and none was spent
 communication with the database. It's safe to assume that the remaining 3 ms
 were spent inside the controller.
 
-Michael Koziarski has an [interesting blog post](http://www.therailsway.com/2009/1/6/requests-per-second)
-explaining the importance of using milliseconds as the metric.
-
 Useful Links
 ------------
 
