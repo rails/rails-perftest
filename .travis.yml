@@ -8,4 +8,6 @@ rvm:
 gemfile:
   - gemfiles/Gemfile-rails-4.0
   - gemfiles/Gemfile-rails-4.1
+  - gemfiles/Gemfile-ruby-prof-lt0.16
+
   - Gemfile
