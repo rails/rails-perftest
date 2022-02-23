@@ -33,7 +33,7 @@ module ActiveSupport
         assert_equal "1.2 MB", space_metric.format(1234567)
         assert_equal "9.3 GB", space_metric.format(10**10)
         assert_equal "91 TB", space_metric.format(10**14)
-        assert_equal "910000 TB", space_metric.format(10**18)
+        assert_equal "890 PB", space_metric.format(10**18)
       end
 
       def test_environment_format_without_rails
