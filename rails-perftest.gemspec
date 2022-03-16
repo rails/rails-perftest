@@ -17,12 +17,12 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Rails::Perftest::VERSION
 
-  gem.add_development_dependency 'ruby-prof', '>= 0.12.1'
+  gem.add_development_dependency 'actionmailer', '>= 5.2'
+  gem.add_development_dependency 'actionpack', '>= 5.2'
+  gem.add_development_dependency 'activemodel', '>= 5.2'
+  gem.add_development_dependency 'activerecord', '>= 5.2'
   gem.add_development_dependency 'minitest', '>= 3'
-  gem.add_development_dependency 'railties', '~> 4.0'
-  gem.add_development_dependency 'activerecord', '~> 4.0'
-  gem.add_development_dependency 'activemodel', '~> 4.0'
-  gem.add_development_dependency 'actionmailer', '~> 4.0'
-  gem.add_development_dependency 'actionpack', '~> 4.0'
-  gem.add_development_dependency 'sqlite3', '~> 1.3'
+  gem.add_development_dependency 'railties', '>= 5.2'
+  gem.add_development_dependency 'ruby-prof', '>= 0.12.1'
+  gem.add_development_dependency 'sqlite3', '>= 1.3'
 end
