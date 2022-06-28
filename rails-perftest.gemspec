@@ -23,6 +23,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'activerecord', '>= 5.2'
   gem.add_development_dependency 'minitest', '>= 3'
   gem.add_development_dependency 'railties', '>= 5.2'
-  gem.add_development_dependency 'ruby-prof', '>= 0.12.1'
+  gem.add_development_dependency 'ruby-prof', '>= 1.0.0'
   gem.add_development_dependency 'sqlite3', '>= 1.3'
 end

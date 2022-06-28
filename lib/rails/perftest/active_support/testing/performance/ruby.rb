@@ -113,7 +113,8 @@ module ActiveSupport
           Mode = RubyProf::PROCESS_TIME if RubyProf.const_defined?(:PROCESS_TIME)
 
           def measure
-            RubyProf.measure_process_time
+            RubyProf.measure_mode = Mode
+            super
           end
         end
 
@@ -121,15 +122,18 @@ module ActiveSupport
           Mode = RubyProf::WALL_TIME if RubyProf.const_defined?(:WALL_TIME)
 
           def measure
-            RubyProf.measure_wall_time
+            RubyProf.measure_mode = Mode
+            super
           end
         end
 
         class CpuTime < Time
-          Mode = RubyProf::CPU_TIME if RubyProf.const_defined?(:CPU_TIME)
+          # from ruby-prof changelog: 'Remove the CPU_TIME measurement mode since it duplicates the PROCESS_TIME mode and required inline assembly code'
+          Mode = RubyProf::PROCESS_TIME if RubyProf.const_defined?(:PROCESS_TIME)
 
           def measure
-            RubyProf.measure_cpu_time
+            RubyProf.measure_mode = Mode
+            super
           end
         end
 
@@ -139,6 +143,7 @@ module ActiveSupport
           # Ruby 1.9 + GCdata patch
           if GC.respond_to?(:malloc_allocated_size)
             def measure
+              RubyProf.measure_mode = Mode
               GC.malloc_allocated_size
             end
           end
