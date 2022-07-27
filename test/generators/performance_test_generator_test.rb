@@ -14,5 +14,6 @@ class PerformanceTestGeneratorTest < Rails::Generators::TestCase
   def test_performance_test_skeleton_is_created
     run_generator
     assert_file "test/performance/dashboard_test.rb", /class DashboardTest < ActionDispatch::PerformanceTest/
+    assert_file "test/test_helper.rb", /class TestCase/
   end
 end
